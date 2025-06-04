@@ -1,32 +1,19 @@
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
-
+import { ThemeContext, useTheme } from "@/contexts/ThemeContext";
 import { Button } from "@/components/ui/button";
+import type { Theme, ThemeContextType } from "@/contexts/ThemeContext";
+import { ThemeProvider } from "./ThemeProvider";
 
 export function ModeToggle() {
-	const [theme, setThemeState] = React.useState<
-		"theme-light" | "dark" | "system"
-	>("theme-light");
-
-	React.useEffect(() => {
-		const isDarkMode = document.documentElement.classList.contains("dark");
-		setThemeState(isDarkMode ? "dark" : "theme-light");
-	}, []);
-
-	React.useEffect(() => {
-		const isDark =
-			theme === "dark" ||
-			(theme === "system" &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches);
-		document.documentElement.classList[isDark ? "add" : "remove"]("dark");
-	}, [theme]);
+	const { theme, setTheme } = useTheme();
 
 	return (
 		<Button
 			variant="outline"
 			size="icon"
 			onClick={() => {
-				theme === "dark" ? setThemeState("theme-light") : setThemeState("dark");
+				theme === "dark" ? setTheme("theme-light") : setTheme("dark");
 			}}
 		>
 			<Sun className="h-[1.2rem] w-[1.2rem] scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
