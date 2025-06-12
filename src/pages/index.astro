@@ -1,19 +1,73 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import { ModeToggle } from "@/components/ModeToggle";
-import { Logo } from "@/components/Logo";
 import { Nav } from "@/components/nav";
+import { Logo } from "@/components/Logo";
+import { ChevronDown } from "lucide-react";
+import { Timeline } from "@/components/Timeline";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
+<script>
+	const handleScroll = () => {
+		if (window.scrollY > 0) {
+			document.documentElement.classList.add("scrolled");
+		}
+		window.removeEventListener("scroll", handleScroll);
+	};
+	window.addEventListener("scroll", handleScroll);
+</script>
 <Layout>
-	<div class="w-full p-4 flex justify-between items-center">
-		<div>
-			<Logo />
+	<nav
+		class="w-full p-4 flex justify-between items-center sticky top-0 z-50 bg-background"
+	>
+		<div class="flex gap-4">
+			<Logo height="2.5rem" width="2.5rem" />
+			<Nav client:load />
 		</div>
-		<Nav client:load />
 		<ModeToggle client:load />
-	</div>
+	</nav>
+	<main class="h-[95vh]">
+		<div class="flex items-center justify-center gap-6 h-11/12">
+			<Logo height="20rem" width="20rem" />
+			<div>
+				<h1 class="text-6xl font-extrabold">Archer Chua</h1>
+				<p class="text-2xl font-bold">Software Engineer</p>
+				<p class="text-2xl">Pragmatic by Program</p>
+			</div>
+		</div>
+		<div
+			class="flex items-center justify-center text-neutral-500 animate-bounce duration-500 gap-2"
+			id="scroll-indicator"
+		>
+			<ChevronDown />
+			<span>Scroll to learn more</span>
+		</div>
+	</main>
+	<section class="container mx-auto my-36">
+		<div class="grid grid-cols-2 justify-center items-center gap-4">
+			<div>
+				<img
+					src="/portrait.jpg"
+					alt=""
+					class="h-[40rem] w-[40rem] rounded-2xl"
+				/>
+			</div>
+			<div>
+				<h2 class="text-2xl font-bold">Hi, I'm Archer</h2>
+				<p class="text-2xl">
+					I am a software engineer with a passion for building scalable and
+					efficient applications. I love solving complex problems and creating
+					innovative solutions that make a difference.
+				</p>
+			</div>
+		</div>
+	</section>
+	<section id="experience" class="flex flex-col items-center gap-8">
+		<h2 class="text-2xl font-bold">My Experience</h2>
+		<Timeline client:load />
+	</section>
+	<div class="h-screen"></div>
 </Layout>

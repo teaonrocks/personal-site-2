@@ -1,7 +1,7 @@
+@import "https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap";
 @import "tailwindcss";
 @import "tw-animate-css";
-
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&: is(.dark *));
 
 @theme inline {
 	--radius-sm: calc(var(--radius) - 4px);
@@ -118,11 +118,18 @@
 	@apply fill-black;
 }
 
+.scrolled {
+	#scroll-indicator {
+		@apply opacity-0;
+	}
+}
+
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
 	body {
 		@apply bg-background text-foreground;
+		font-family: "Manrope", sans-serif;
 	}
 }

@@ -2,7 +2,14 @@
 
 import * as React from "react";
 
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react";
+import {
+	CircleCheckIcon,
+	CircleHelpIcon,
+	CircleIcon,
+	Github,
+	Linkedin,
+	Twitter,
+} from "lucide-react";
 
 import {
 	NavigationMenu,
@@ -29,22 +36,22 @@ export function Nav() {
 										href="/"
 									>
 										<div className="mt-4 mb-2 text-lg font-medium">
-											shadcn/ui
+											Archer Chua
 										</div>
 										<p className="text-muted-foreground text-sm leading-tight">
-											Beautifully designed components built with Tailwind CSS.
+											Pragmatic by Program.
 										</p>
 									</a>
 								</NavigationMenuLink>
 							</li>
-							<ListItem href="/docs" title="Introduction">
-								Re-usable components built using Radix UI and Tailwind CSS.
+							<ListItem href="#intro" title="Introduction">
+								I am a student with a passion for programming and technology.
 							</ListItem>
-							<ListItem href="/docs/installation" title="Installation">
-								How to install dependencies and structure your app.
+							<ListItem href="#experience" title="Experience">
+								Education, interships, and work experience.
 							</ListItem>
-							<ListItem href="/docs/primitives/typography" title="Typography">
-								Styles for headings, paragraphs, lists...etc
+							<ListItem href="#projects" title="Projects">
+								Personal projects, School projects, and more.
 							</ListItem>
 						</ul>
 					</NavigationMenuContent>
@@ -57,26 +64,35 @@ export function Nav() {
 				</NavigationMenuItem>
 
 				<NavigationMenuItem>
-					<NavigationMenuTrigger>With Icon</NavigationMenuTrigger>
+					<NavigationMenuTrigger>Socials</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[200px] gap-4">
 							<li>
 								<NavigationMenuLink asChild>
-									<a href="#" className="flex-row items-center gap-2">
-										<CircleHelpIcon />
-										Backlog
+									<a
+										href="https://github.com/teaonrocks"
+										className="flex-row items-center gap-2"
+									>
+										<Github />
+										GitHub
 									</a>
 								</NavigationMenuLink>
 								<NavigationMenuLink asChild>
-									<a href="#" className="flex-row items-center gap-2">
-										<CircleIcon />
-										To Do
+									<a
+										href="www.linkedin.com/in/archer-chua-4007401a2"
+										className="flex-row items-center gap-2"
+									>
+										<Linkedin />
+										LinkedIn
 									</a>
 								</NavigationMenuLink>
 								<NavigationMenuLink asChild>
-									<a href="#" className="flex-row items-center gap-2">
-										<CircleCheckIcon />
-										Done
+									<a
+										href="https://x.com/teaonrocks"
+										className="flex-row items-center gap-2"
+									>
+										<Twitter />
+										Twitter
 									</a>
 								</NavigationMenuLink>
 							</li>
