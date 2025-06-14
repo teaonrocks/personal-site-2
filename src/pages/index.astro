@@ -5,8 +5,7 @@ import { Nav } from "@/components/nav";
 import { Logo } from "@/components/Logo";
 import { ChevronDown } from "lucide-react";
 import { Timeline } from "@/components/Timeline";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Card } from "@/components/ui/card";
+import { Achievements } from "@/components/Achievements";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -23,12 +22,10 @@ import { Card } from "@/components/ui/card";
 </script>
 <Layout>
 	<nav
-		class="w-full p-4 flex justify-between items-center sticky top-0 z-50 bg-background"
+		class="w-full p-4 flex items-center sticky top-0 z-50 bg-background gap-4 justify-between"
 	>
-		<div class="flex gap-4">
-			<Logo height="2.5rem" width="2.5rem" />
-			<Nav client:load />
-		</div>
+		<Logo height="2.5rem" width="2.5rem" />
+		<Nav client:load />
 		<ModeToggle client:load />
 	</nav>
 	<main class="h-[95vh]">
@@ -49,7 +46,9 @@ import { Card } from "@/components/ui/card";
 		</div>
 	</main>
 	<section class="container mx-auto my-36">
-		<div class="grid grid-cols-2 justify-center items-center gap-4">
+		<div
+			class="md:grid md:grid-cols-2 md:justify-center md:items-center md:gap-4 flex flex-col gap-16"
+		>
 			<div>
 				<img
 					src="/portrait.jpg"

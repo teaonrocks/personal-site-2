@@ -6,12 +6,19 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
+import {
+	HoverCard,
+	HoverCardContent,
+	HoverCardTrigger,
+} from "@/components/ui/hover-card";
+import { SpaceIcon } from "lucide-react";
 
 const timelineItems = [
 	{
 		date: "Jan 2020 - Feb 2022",
 		title: "ITE College Central",
 		description: "Nitec in Info-comm Technology",
+		extras: ["Member of ITE College Central Cuesports"],
 	},
 	{
 		date: "Jan 2021 - Jul 2021",
@@ -21,17 +28,29 @@ const timelineItems = [
 	{
 		date: "Apr 2022 - May 2024",
 		title: "ITE College Central",
-		description: "Higher Nitec in IT software applications development",
+		description: "Higher Nitec in IT Software Applications Development",
+		extras: [
+			"President of ITE College Central Cuesports",
+			"Competed for ITE College Central in ARC College Challenge Cup 2022",
+			"Competed for ITE College Central in Invictus 9-Ball 2022",
+			"Competed for ITE College Central in ARC College Challenge Cup 1 and 2 2023",
+		],
 	},
 	{
 		date: "Apr 2023 - Aug 2023",
 		title: "Internship at Singrow Pte Ltd",
-		description: "Digital content developer",
+		description: "Digital Content Developer",
 	},
 	{
 		date: "Apr 2024 - Present",
 		title: "Republic Polytechnic",
 		description: "Diploma in Digital Design and Development",
+		extras: [
+			"Director's Roll of Honour AY2024 Semester 1",
+			"Director's Roll of Honour AY2024 Semester 2",
+			"Participated in SCDF-Dell Hackathon 'Lifesavers' Innovation Challenge 2025",
+			"Participated in DSTA Brainhack CODE_EXP 2025",
+		],
 	},
 ];
 
@@ -39,6 +58,7 @@ interface TimelineCardProps {
 	date: string;
 	title: string;
 	description: string;
+	extras?: string[];
 }
 
 const TimelineCard = ({
@@ -46,7 +66,28 @@ const TimelineCard = ({
 }: {
 	timelineItem: TimelineCardProps;
 }) => {
-	return (
+	return TimelineItem.extras ? (
+		<HoverCard openDelay={400}>
+			<HoverCardTrigger asChild>
+				<Card className="w-96 group">
+					<CardHeader>
+						<CardTitle className="group-hover:underline">
+							{TimelineItem.title}
+						</CardTitle>
+						<CardDescription>{TimelineItem.description}</CardDescription>
+						<CardDescription>{TimelineItem.date}</CardDescription>
+					</CardHeader>
+				</Card>
+			</HoverCardTrigger>
+			<HoverCardContent side="right" sideOffset={15} className="w-fit">
+				<div className="flex flex-col gap-2">
+					{TimelineItem.extras.map((extra, index) => (
+						<p key={index}>{extra}</p>
+					))}
+				</div>
+			</HoverCardContent>
+		</HoverCard>
+	) : (
 		<Card className="w-96">
 			<CardHeader>
 				<CardTitle>{TimelineItem.title}</CardTitle>
