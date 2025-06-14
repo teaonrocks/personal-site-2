@@ -69,7 +69,7 @@ const TimelineCard = ({
 	return TimelineItem.extras ? (
 		<HoverCard openDelay={400}>
 			<HoverCardTrigger asChild>
-				<Card className="w-96 group">
+				<Card className="w-76 group">
 					<CardHeader>
 						<CardTitle className="group-hover:underline">
 							{TimelineItem.title}
@@ -88,7 +88,7 @@ const TimelineCard = ({
 			</HoverCardContent>
 		</HoverCard>
 	) : (
-		<Card className="w-96">
+		<Card className="w-76">
 			<CardHeader>
 				<CardTitle>{TimelineItem.title}</CardTitle>
 				<CardDescription>{TimelineItem.description}</CardDescription>
