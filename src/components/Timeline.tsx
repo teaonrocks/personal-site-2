@@ -9,48 +9,28 @@ import {
 
 const timelineItems = [
 	{
-		date: "Jan 2020",
-		title: "Enrolled in ITE College Central",
+		date: "Jan 2020 - Feb 2022",
+		title: "ITE College Central",
 		description: "Nitec in Info-comm Technology",
 	},
 	{
-		date: "Jan 2021",
-		title: "Started internship at NCS Group",
+		date: "Jan 2021 - Jul 2021",
+		title: "Internship at NCS Group",
 		description: "Desktop Support Engineer",
 	},
 	{
-		date: "Jul 2021",
-		title: "Completed internship at NCS Group",
-		description: "Desktop Support Engineer",
-	},
-	{
-		date: "Feb 2022",
-		title: "Graduated from ITE College Central",
-		description: "Nitec in Info-comm Technology",
-	},
-	{
-		date: "Apr 2022",
-		title: "Enrolled in ITE College Central",
+		date: "Apr 2022 - May 2024",
+		title: "ITE College Central",
 		description: "Higher Nitec in IT software applications development",
 	},
 	{
-		date: "Apr 2023",
-		title: "Stared internship at Singrow Pte Ltd",
+		date: "Apr 2023 - Aug 2023",
+		title: "Internship at Singrow Pte Ltd",
 		description: "Digital content developer",
 	},
 	{
-		date: "Aug 2023",
-		title: "Completed internship at Singrow Pte Ltd",
-		description: "Digital content developer",
-	},
-	{
-		date: "May 2024",
-		title: "Graduated from ITE College Central",
-		description: "Higher Nitec in IT software applications development",
-	},
-	{
-		date: "Apr 2024",
-		title: "Enrolled in Republic Polytechnic",
+		date: "Apr 2024 - Present",
+		title: "Republic Polytechnic",
 		description: "Diploma in Digital Design and Development",
 	},
 ];
@@ -85,24 +65,52 @@ export const Timeline = () => {
 		const container = containerRef.current;
 		if (!container) return;
 
+		// Create more granular thresholds
+		const createThresholds = () => {
+			const thresholds = [];
+			for (let i = 0; i <= 100; i += 2) {
+				// Every 2% instead of 1%
+				thresholds.push(i / 100);
+			}
+			return thresholds;
+		};
+
 		const ProgressObserver = new IntersectionObserver(
 			(entries) => {
 				entries.forEach((entry) => {
-					if (entry.isIntersecting) {
-						const visibleRatio = entry.intersectionRatio;
-						const progressPercent = visibleRatio * 100;
+					const rect = entry.boundingClientRect;
+					const viewportHeight = window.innerHeight;
+					const elementHeight = rect.height;
 
-						setProgress(
-							progressPercent < 95 ? Math.max(0, progressPercent - 5) : 100
+					let progressPercent = 0;
+
+					if (entry.isIntersecting) {
+						const startPosition = viewportHeight;
+						const endPosition = viewportHeight - elementHeight;
+
+						const currentPosition = rect.top;
+						const totalDistance = startPosition - endPosition;
+						const traveledDistance = startPosition - currentPosition;
+
+						console.log(
+							`Start: ${startPosition}, End: ${endPosition}, Current: ${currentPosition}, Total: ${totalDistance}, Traveled: ${traveledDistance}`
 						);
-						if (progressPercent >= 95) {
-							setProgress(100);
-							ProgressObserver.disconnect();
-						}
+						progressPercent = Math.min(
+							100,
+							Math.max(0, (traveledDistance / totalDistance) * 100)
+						);
+					}
+
+					setProgress(progressPercent > 98 ? 100 : progressPercent - 2);
+					if (progressPercent >= 100) {
+						ProgressObserver.disconnect();
 					}
 				});
 			},
-			{ threshold: Array.from({ length: 101 }, (_, i) => i / 100) }
+			{
+				threshold: createThresholds(),
+				rootMargin: "0px 0px -1px 0px", // Slight margin to ensure detection
+			}
 		);
 
 		ProgressObserver.observe(container);
@@ -110,10 +118,8 @@ export const Timeline = () => {
 	}, []);
 
 	return (
-		<div ref={containerRef} className="justify-center flex gap-8 ">
-			<div
-				className={`flex items-center justify-center row-span-9 justify-self-end`}
-			>
+		<div ref={containerRef} className="justify-center flex gap-16 ">
+			<div className={`flex items-center justify-center justify-self-end`}>
 				<Progress value={progress} aria-orientation="vertical" />
 			</div>
 			<div className="flex flex-col gap-8">

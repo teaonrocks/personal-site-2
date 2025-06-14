@@ -5,6 +5,8 @@ import { Nav } from "@/components/nav";
 import { Logo } from "@/components/Logo";
 import { ChevronDown } from "lucide-react";
 import { Timeline } from "@/components/Timeline";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Card } from "@/components/ui/card";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -67,7 +69,9 @@ import { Timeline } from "@/components/Timeline";
 	</section>
 	<section id="experience" class="flex flex-col items-center gap-8">
 		<h2 class="text-2xl font-bold">My Experience</h2>
-		<Timeline client:load />
+		<div class="flex gap-16">
+			<Timeline client:load />
+		</div>
 	</section>
 	<div class="h-screen"></div>
 </Layout>
