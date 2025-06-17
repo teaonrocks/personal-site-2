@@ -1,12 +1,11 @@
-export const Logo = ({ height, width }: { height: string; width: string }) => {
+export const Logo = ({ className, ...props }: React.ComponentProps<"svg">) => {
 	return (
 		<svg
 			id="Layer_2"
 			data-name="Layer 2"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 84.06 83.9"
-			height={height}
-			width={width}
+			className={className}
 		>
 			<g id="Logo" data-name="Logo">
 				<g>

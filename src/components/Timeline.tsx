@@ -69,7 +69,7 @@ const TimelineCard = ({
 	return TimelineItem.extras ? (
 		<HoverCard openDelay={400}>
 			<HoverCardTrigger asChild>
-				<Card className="w-76 group">
+				<Card className="w-full group max-w-96">
 					<CardHeader>
 						<CardTitle className="group-hover:underline">
 							{TimelineItem.title}
@@ -88,7 +88,7 @@ const TimelineCard = ({
 			</HoverCardContent>
 		</HoverCard>
 	) : (
-		<Card className="w-76">
+		<Card className="w-full max-w-96">
 			<CardHeader>
 				<CardTitle>{TimelineItem.title}</CardTitle>
 				<CardDescription>{TimelineItem.description}</CardDescription>
@@ -159,11 +159,11 @@ export const Timeline = () => {
 	}, []);
 
 	return (
-		<div ref={containerRef} className="justify-center flex gap-16 ">
-			<div className={`flex items-center justify-center justify-self-end`}>
+		<div ref={containerRef} className="justify-center flex gap-16 w-full">
+			<div>
 				<Progress value={progress} aria-orientation="vertical" />
 			</div>
-			<div className="flex flex-col gap-8">
+			<div className="flex flex-col gap-8 w-full max-w-96">
 				{timelineItems.map((item, index) => (
 					<TimelineCard key={index} timelineItem={item} />
 				))}

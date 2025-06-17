@@ -24,17 +24,17 @@ import { Achievements } from "@/components/Achievements";
 	<nav
 		class="w-full p-4 flex items-center sticky top-0 z-50 bg-background gap-4 justify-between"
 	>
-		<Logo height="2.5rem" width="2.5rem" />
+		<Logo className="h-10 w-10" />
 		<Nav client:load />
 		<ModeToggle client:load />
 	</nav>
 	<main class="h-[95vh]">
 		<div class="flex items-center justify-center gap-6 h-11/12">
-			<Logo height="20rem" width="20rem" />
+			<Logo className="h-80 w-80" />
 			<div>
-				<h1 class="text-6xl font-extrabold">Archer Chua</h1>
-				<p class="text-2xl font-bold">Software Engineer</p>
-				<p class="text-2xl">Pragmatic by Program</p>
+				<h1 class="md:text-6xl font-extrabold text-4xl">Archer Chua</h1>
+				<p class="md:text-2xl font-bold text-lg">Software Engineer</p>
+				<p class="md:text-2xl text-lg">Pragmatic by Program</p>
 			</div>
 		</div>
 		<div
@@ -45,7 +45,7 @@ import { Achievements } from "@/components/Achievements";
 			<span>Scroll to learn more</span>
 		</div>
 	</main>
-	<section class="container mx-auto my-36">
+	<section class="container mx-auto my-36 p-6">
 		<div
 			class="md:grid md:grid-cols-2 md:justify-center md:items-center md:gap-4 flex flex-col gap-16"
 		>
@@ -58,7 +58,7 @@ import { Achievements } from "@/components/Achievements";
 			</div>
 			<div>
 				<h2 class="text-2xl font-bold">Hi, I'm Archer</h2>
-				<p class="text-2xl">
+				<p class="md:text-2xl tezt-xl">
 					I am a software engineer with a passion for building scalable and
 					efficient applications. I love solving complex problems and creating
 					innovative solutions that make a difference.
@@ -66,11 +66,12 @@ import { Achievements } from "@/components/Achievements";
 			</div>
 		</div>
 	</section>
-	<section id="experience" class="flex flex-col items-center gap-8">
+	<section
+		id="experience"
+		class="flex flex-col items-center justify-center gap-8 p-6"
+	>
 		<h2 class="text-2xl font-bold">My Experience</h2>
-		<div class="flex gap-16">
-			<Timeline client:load />
-		</div>
+		<Timeline client:load />
 	</section>
-	<div class="h-screen"></div>
 </Layout>
+<div class="h-screen"></div>
