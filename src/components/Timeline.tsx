@@ -2,6 +2,7 @@ import React from "react";
 import { Progress } from "./ui/progress";
 import {
 	Card,
+	CardContent,
 	CardDescription,
 	CardHeader,
 	CardTitle,
@@ -11,7 +12,12 @@ import {
 	HoverCardContent,
 	HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import { SpaceIcon } from "lucide-react";
+import { ChevronDown, CircleSmall, SpaceIcon } from "lucide-react";
+import {
+	Collapsible,
+	CollapsibleContent,
+	CollapsibleTrigger,
+} from "./ui/collapsible";
 
 const timelineItems = [
 	{
@@ -67,8 +73,11 @@ const TimelineCard = ({
 	timelineItem: TimelineCardProps;
 }) => {
 	return TimelineItem.extras ? (
-		<HoverCard openDelay={400}>
-			<HoverCardTrigger asChild>
+		<Collapsible>
+			<CollapsibleTrigger
+				asChild
+				className="[&[data-state=open]>div>div>svg]:rotate-180 "
+			>
 				<Card className="w-full group max-w-96">
 					<CardHeader>
 						<CardTitle className="group-hover:underline">
@@ -76,17 +85,23 @@ const TimelineCard = ({
 						</CardTitle>
 						<CardDescription>{TimelineItem.description}</CardDescription>
 						<CardDescription>{TimelineItem.date}</CardDescription>
+						<CardDescription className="flex gap-2">
+							<span>More</span>
+							<ChevronDown className="text-muted-foreground pointer-events-none size-4 shrink-0 translate-y-0.5 transition-transform duration-200" />
+						</CardDescription>
 					</CardHeader>
+					<CollapsibleContent className="w-fit">
+						<CardContent className="flex flex-col gap-2">
+							<ul className="flex flex-col gap-2">
+								{TimelineItem.extras.map((extra, index) => (
+									<p className="">{extra}</p>
+								))}
+							</ul>
+						</CardContent>
+					</CollapsibleContent>
 				</Card>
-			</HoverCardTrigger>
-			<HoverCardContent side="right" sideOffset={15} className="w-fit">
-				<div className="flex flex-col gap-2">
-					{TimelineItem.extras.map((extra, index) => (
-						<p key={index}>{extra}</p>
-					))}
-				</div>
-			</HoverCardContent>
-		</HoverCard>
+			</CollapsibleTrigger>
+		</Collapsible>
 	) : (
 		<Card className="w-full max-w-96">
 			<CardHeader>
