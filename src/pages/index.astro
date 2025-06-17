@@ -29,9 +29,11 @@ import { Achievements } from "@/components/Achievements";
 		<ModeToggle client:load />
 	</nav>
 	<main class="h-[95vh]">
-		<div class="flex items-center justify-center gap-6 h-11/12">
-			<Logo className="h-80 w-80" />
-			<div>
+		<div
+			class="flex items-start md:items-center justify-center gap-6 h-11/12 p-6 flex-col md:flex-row w-fit mx-auto"
+		>
+			<Logo className="md:h-80 md:w-80 h-70 w-70" />
+			<div class="">
 				<h1 class="md:text-6xl font-extrabold text-4xl">Archer Chua</h1>
 				<p class="md:text-2xl font-bold text-lg">Software Engineer</p>
 				<p class="md:text-2xl text-lg">Pragmatic by Program</p>
