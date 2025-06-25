@@ -1,12 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { ModeToggle } from "@/components/ModeToggle";
-import { Nav } from "@/components/nav";
 import { Logo } from "@/components/Logo";
 import { ChevronDown } from "lucide-react";
 import { Timeline } from "@/components/Timeline";
-import { Achievements } from "@/components/Achievements";
-
+import ProjectsGrid from "@/components/ProjectGrid";
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
@@ -21,22 +18,19 @@ import { Achievements } from "@/components/Achievements";
 	window.addEventListener("scroll", handleScroll);
 </script>
 <Layout>
-	<nav
-		class="w-full p-4 flex items-center sticky top-0 z-50 bg-background gap-4 justify-between"
-	>
-		<Logo className="h-10 w-10" />
-		<Nav client:load />
-		<ModeToggle client:load />
-	</nav>
-	<main class="h-[95vh]">
+	<section class="h-[95vh]">
 		<div
 			class="flex items-start md:items-center justify-center gap-6 h-11/12 p-6 flex-col md:flex-row w-fit mx-auto"
 		>
 			<Logo className="md:h-80 md:w-80 h-70 w-70" />
 			<div class="">
-				<h1 class="md:text-6xl font-extrabold text-4xl">Archer Chua</h1>
-				<p class="md:text-2xl font-bold text-lg">Software Engineer</p>
-				<p class="md:text-2xl text-lg">Pragmatic by Program</p>
+				<h1 class="md:text-6xl font-extrabold text-4xl tracking-tight">
+					Archer Chua
+				</h1>
+				<p class="md:text-2xl font-bold text-lg tracking-tight">
+					Software Engineer
+				</p>
+				<p class="md:text-2xl text-lg tracking-tight">Pragmatic by Program</p>
 			</div>
 		</div>
 		<div
@@ -46,8 +40,8 @@ import { Achievements } from "@/components/Achievements";
 			<ChevronDown />
 			<span>Scroll to learn more</span>
 		</div>
-	</main>
-	<section class="container mx-auto my-36 p-6">
+	</section>
+	<section class="container mx-auto my-36 p-6" id="introduction">
 		<div
 			class="md:grid md:grid-cols-2 md:justify-center md:items-center md:gap-4 flex flex-col gap-16"
 		>
@@ -59,7 +53,7 @@ import { Achievements } from "@/components/Achievements";
 				/>
 			</div>
 			<div>
-				<h2 class="text-2xl font-bold">Hi, I'm Archer</h2>
+				<h2 class="text-2xl font-bold tracking-tight">Hi, I'm Archer</h2>
 				<p class="md:text-2xl tezt-xl">
 					I am a software engineer with a passion for building scalable and
 					efficient applications. I love solving complex problems and creating
@@ -69,11 +63,17 @@ import { Achievements } from "@/components/Achievements";
 		</div>
 	</section>
 	<section
+		class="flex flex-col items-center justify-center gap-8 p-6 mb-36"
 		id="experience"
-		class="flex flex-col items-center justify-center gap-8 p-6"
 	>
-		<h2 class="text-2xl font-bold">My Experience</h2>
+		<h2 class="text-2xl font-bold tracking-tight">My Experience</h2>
 		<Timeline client:load />
 	</section>
+	<section
+		id="projects"
+		class="flex flex-col items-center justify-center gap-8 p-6 mb-36"
+	>
+		<h2 class="text-2xl font-bold tracking-tight">My Projects</h2>
+		<ProjectsGrid client:load />
+	</section>
 </Layout>
-<div class="h-screen"></div>

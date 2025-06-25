@@ -1,4 +1,8 @@
 ---
+import Footer from "@/components/Footer";
+import { Logo } from "@/components/Logo";
+import { ModeToggle } from "@/components/ModeToggle";
+import { Nav } from "@/components/nav";
 import "@/styles/global.css";
 ---
 
@@ -33,6 +37,14 @@ import "@/styles/global.css";
 		<title>Archer Chua</title>
 	</head>
 	<body>
+		<nav
+			class="w-full p-4 flex items-center sticky top-0 z-50 bg-background gap-4 justify-between"
+		>
+			<Logo className="h-10 w-10" />
+			<Nav client:load />
+			<ModeToggle client:load />
+		</nav>
 		<slot />
+		<Footer client:load />
 	</body>
 </html>

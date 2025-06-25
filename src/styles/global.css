@@ -123,6 +123,9 @@
 		@apply opacity-0;
 	}
 }
+html {
+	scroll-behavior: smooth;
+}
 
 @layer base {
 	* {
@@ -131,5 +134,8 @@
 	body {
 		@apply bg-background text-foreground;
 		font-family: "Manrope", sans-serif;
+	}
+	html {
+		scrollbar-width: thin;
 	}
 }

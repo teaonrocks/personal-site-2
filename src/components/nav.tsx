@@ -62,7 +62,7 @@ export function Nav() {
 										</a>
 									</NavigationMenuLink>
 								</li>
-								<ListItem href="#intro" title="Introduction">
+								<ListItem href="#introduction" title="Introduction">
 									I am a student with a passion for programming and technology.
 								</ListItem>
 								<ListItem href="#experience" title="Experience">
@@ -80,7 +80,7 @@ export function Nav() {
 							asChild
 							className={navigationMenuTriggerStyle()}
 						>
-							<a href="/docs">Blog</a>
+							<a href="/blog">Blog</a>
 						</NavigationMenuLink>
 					</NavigationMenuItem>
 
@@ -142,7 +142,7 @@ export function Nav() {
 								{/* Blog Link */}
 								<AccordionItem value="item-1" className="p-4">
 									<a
-										href="/docs"
+										href="/blog"
 										onClick={() => setIsSheetOpen(false)} // Close sheet on click
 										className="flex-1 items-center justify-between py-4 font-medium transition-all hover:underline data-[state=open]:underline [&[data-state=open]>svg]:rotate-180 text-lg"
 									>
