@@ -100,7 +100,7 @@ export function Nav() {
 									</NavigationMenuLink>
 									<NavigationMenuLink asChild>
 										<a
-											href="www.linkedin.com/in/archer-chua-4007401a2"
+											href="https://www.linkedin.com/in/archer-chua-4007401a2"
 											className="flex-row items-center gap-2"
 										>
 											<Linkedin />
